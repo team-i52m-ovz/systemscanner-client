@@ -6,6 +6,7 @@
   right: 0;
   display: flex;
   flex-direction: column;
+  max-height: 100%;
 }
 
 .sidenav {
@@ -44,7 +45,7 @@
 .logout {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
 }
 
 .example-radio-group {
