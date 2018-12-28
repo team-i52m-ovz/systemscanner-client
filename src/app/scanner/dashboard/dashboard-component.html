@@ -1,0 +1,19 @@
+<mat-sidenav-container class="content">
+  <mat-sidenav class="sidenav" #sidenav [mode]="'over'">
+    <div class="close-wrapper">
+      <mat-icon class="close" (click)="sidenav.toggle()">arrow_back</mat-icon>
+      <mat-icon class="add" (click)="sidenav.toggle()">add</mat-icon>
+    </div>
+
+    <mat-list class="item">
+      <mat-list-item *ngFor="let message of instances">
+        <mat-icon matListIcon>memory</mat-icon>
+        <h3 matLine> {{message}} </h3>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-sidenav>
+
+  <mat-icon class="open" (click)="sidenav.toggle()">menu</mat-icon>
+  <mat-icon class="logout" (click)="logout()">exit_to_app</mat-icon>
+</mat-sidenav-container>
