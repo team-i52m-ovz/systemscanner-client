@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { ReportDataService } from '../../services/report-data-service';
 import { Report } from '../../models/entities/report';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-report',
@@ -14,8 +15,10 @@ export class ReportComponent {
   public reports: Report[];
 
   constructor(private router: Router, protected dataService: ReportDataService, protected route: ActivatedRoute) {
-    this.dataService.findReports(route.snapshot.paramMap.get('pid'))
-      .subscribe(res => this.reports = res);
+    route.url.subscribe(() => {
+      this.dataService.findReports(this.route.snapshot.paramMap.get('pid'))
+        .subscribe(res => this.reports = res);
+    });
   }
 
 }
