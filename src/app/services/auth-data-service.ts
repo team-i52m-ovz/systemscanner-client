@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonHttp } from '../models/constants/constants';
@@ -17,7 +17,7 @@ export class AuthDataService {
     return this.httpClient.post<HttpResponse<any>>(`${this.api}auth/login`, user, {observe: 'response'})
       .pipe(
         map(res =>
-          localStorage.setItem(CommonHttp.headers .auth, res.headers.get(CommonHttp.headers.auth)))
+          localStorage.setItem(CommonHttp.headers.auth, res.headers.get(CommonHttp.headers.auth)))
       );
   }
 }
