@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  scannerApi: 'http://api.system-scanner.com/api/v1/'
+  scannerApi: 'http://system-scanner.com/api/v1/'
 };
