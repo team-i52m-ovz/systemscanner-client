@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="(reportsList$ | async)">
+      <ng-container matColumnDef="id">
+        <th class="table-header-id" mat-header-cell *matHeaderCellDef> Report Id.</th>
+        <td class="table-cell-id" mat-cell *matCellDef="let element" (click)="navigateToDetailedReport(element.id)">
+          {{element.id}}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="created">
+        <th class="table-header-date" mat-header-cell *matHeaderCellDef> Created At.</th>
+        <td class="table-cell-date" mat-cell *matCellDef="let element" (click)="navigateToDetailedReport(element.id)">
+          {{element.createdAt | date: 'medium'}}
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+  </div>
+  <div class="button-container">
+    <button *ngIf="!(paginationData$ | async)?.isLast" mat-button (click)="getReports(currentPid)">Load More</button>
+  </div>
+</div>
