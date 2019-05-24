@@ -1,0 +1,170 @@
+<div class="container">
+  <div class="info__main">
+    <p>Win 32 Computer system: {{detailedReport?.Win32_ComputerSystem}}</p>
+    <p>Created at: {{detailedReport?.createdAt | date: 'medium'}}</p>
+  </div>
+  <div class="swipers-container">
+    <div class="cont">
+      <p class="title">Win32 BIOS</p>
+      <div class="swiper-container info__bios">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide info__bios__item" *ngFor="let bios of detailedReport?.Win32_BIOS">
+            <p>
+              <span>BuildNumber: </span>
+              <span>{{bios.BuildNumber}}</span>
+            </p>
+            <p>
+              <span>CodeSet: </span>
+              <span>{{bios.CodeSet}}</span>
+            </p>
+            <p>
+              <span>CurrentLanguage: </span>
+              <span>{{bios.CurrentLanguage}}</span>
+            </p>
+            <p>
+              <span>Description: </span>
+              <span>{{bios.Description}}</span>
+            </p>
+            <p>
+              <span>EmbeddedControllerMajorVersion: </span>
+              <span>{{bios.EmbeddedControllerMajorVersion}}</span>
+            </p>
+            <p>
+              <span>EmbeddedControllerMinorVersion: </span>
+              <span>{{bios.EmbeddedControllerMinorVersion}}</span>
+            </p>
+            <p>
+              <span>InstallDate: </span>
+              <span>{{bios.InstallDate}}</span>
+            </p>
+            <p>
+              <span>Manufacturer: </span>
+              <span>{{bios.Manufacturer}}</span>
+            </p>
+            <p>
+              <span>Name: </span>
+              <span>{{bios.Name}}</span>
+            </p>
+            <p>
+              <span>PrimaryBIOS: </span>
+              <span>{{bios.PrimaryBIOS}}</span>
+            </p>
+            <p>
+              <span>SerialNumber: </span>
+              <span>{{bios.SerialNumber}}</span>
+            </p>
+            <p>
+              <span>SoftwareElementID: </span>
+              <span>{{bios.SoftwareElementID}}</span>
+            </p>
+            <p>
+              <span>SystemBiosMajorVersion: </span>
+              <span>{{bios.SystemBiosMajorVersion}}</span>
+            </p>
+            <p>
+              <span>SystemBiosMinorVersion: </span>
+              <span>{{bios.SystemBiosMinorVersion}}</span>
+            </p>
+            <p>
+              <span>TargetOperatingSystem: </span>
+              <span>{{bios.TargetOperatingSystem}}</span>
+            </p>
+            <p>
+              <span>Version: </span>
+              <span>{{bios.Version}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cont">
+      <p class="title">Win32 Baseboard</p>
+      <div class="swiper-container info__baseboard">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide info__bios__baseboard" *ngFor="let baseboard of detailedReport?.Win32_Baseboard">
+            <p>
+              <span>Depth: </span>
+              <span>{{baseboard.Depth}}</span>
+            </p>
+            <p>
+              <span>Description: </span>
+              <span>{{baseboard.Description}}</span>
+            </p>
+            <p>
+              <span>Height: </span>
+              <span>{{baseboard.Height}}</span>
+            </p>
+            <p>
+              <span>HostingBoard: </span>
+              <span>{{baseboard.HostingBoard}}</span>
+            </p>
+            <p>
+              <span>InstallDate: </span>
+              <span>{{baseboard.InstallDate}}</span>
+            </p>
+            <p>
+              <span>Manufacturer: </span>
+              <span>{{baseboard.Manufacturer}}</span>
+            </p>
+            <p>
+              <span>Model: </span>
+              <span>{{baseboard.Model}}</span>
+            </p>
+            <p>
+              <span>Name: </span>
+              <span>{{baseboard.Name}}</span>
+            </p>
+            <p>
+              <span>PartNumber: </span>
+              <span>{{baseboard.PartNumber}}</span>
+            </p>
+            <p>
+              <span>PoweredOn: </span>
+              <span>{{baseboard.PoweredOn}}</span>
+            </p>
+            <p>
+              <span>Product: </span>
+              <span>{{baseboard.Product}}</span>
+            </p>
+            <p>
+              <span>Removable: </span>
+              <span>{{baseboard.Removable}}</span>
+            </p>
+            <p>
+              <span>Replaceable: </span>
+              <span>{{baseboard.Replaceable}}</span>
+            </p>
+            <p>
+              <span>RequirementsDescription: </span>
+              <span>{{baseboard.RequirementsDescription}}</span>
+            </p>
+            <p>
+              <span>RequiresDaughterBoard: </span>
+              <span>{{baseboard.RequiresDaughterBoard}}</span>
+            </p>
+            <p>
+              <span>SerialNumber: </span>
+              <span>{{baseboard.SerialNumber}}</span>
+            </p>
+            <p>
+              <span>SpecialRequirements: </span>
+              <span>{{baseboard.SpecialRequirements}}</span>
+            </p>
+            <p>
+              <span>Status: </span>
+              <span>{{baseboard.Status}}</span>
+            </p>
+            <p>
+              <span>Weight: </span>
+              <span>{{baseboard.Weight}}</span>
+            </p>
+            <p>
+              <span>Width: </span>
+              <span>{{baseboard.Width}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
