@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {CanActivate, Router} from '@angular/router';
 import {CommonHttp} from '../../models/constants/constants';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) {
   }
 
-  public canActivate() {
+  canActivate() {
     if (localStorage.getItem(CommonHttp.headers.auth)) {
       return true;
     } else {
