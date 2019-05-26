@@ -32,7 +32,7 @@ export class DashboardComponent {
     });
   }
 
-  private openDialog(): void {
+  public openDialog(): void {
     const dialogRef = this.dialog.open(NewInstanceComponent);
 
     dialogRef.afterClosed().subscribe((result: INewInstanse) => {

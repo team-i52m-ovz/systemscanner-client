@@ -1,7 +1,7 @@
-import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 import {CommonHttp} from '../../models/constants/constants';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {
   }
 
-  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     const authToken = localStorage.getItem(CommonHttp.headers.auth);
     let request = req;
 
