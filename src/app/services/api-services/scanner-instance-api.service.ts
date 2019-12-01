@@ -17,7 +17,7 @@ export class ScannerInstanceApiService {
   }
 
   public findScannerInstances(): Observable<string[]> {
-    return this._httpClient.get<any[]>(`${this._api}scanner/instances`)
+    return this._httpClient.get<any[]>(`${this._api}scanner-instances`)
       .pipe(
         take(1),
         map(res => res.map(value => value && value.pid))
@@ -25,7 +25,7 @@ export class ScannerInstanceApiService {
   }
 
   public addNewScannerInstance(newInstance: INewInstanse): Observable<INewInstanse> {
-    return this._httpClient.post<any>(`${this._api}scanner/instances`, newInstance)
+    return this._httpClient.post<any>(`${this._api}scanner-instances`, newInstance)
       .pipe(
         take(1),
         map(resp => Mapper.mapNewInstanceToINewInstance(resp))
