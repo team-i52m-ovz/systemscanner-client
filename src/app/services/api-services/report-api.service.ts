@@ -18,6 +18,13 @@ export class ReportApiService {
     this._api = environment.scannerApi;
   }
 
+  public getNameByPid(pid: string): Observable<any> {
+    return this._httpClient.post(`${this._api}scanner-instances`, {pid})
+      .pipe(
+        take(1)
+      );
+  }
+
   public findReports(pid: string, page: number = 0): Observable<IReportResponse> {
     return this._httpClient.post<any[]>(`${this._api}reports?page=${page}`, {pid: pid})
       .pipe(

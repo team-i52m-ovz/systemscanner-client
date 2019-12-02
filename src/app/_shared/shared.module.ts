@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -30,8 +31,10 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatSidenavModule,
     MatCheckboxModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    LoaderComponent
+  ],
+  declarations: [LoaderComponent]
 })
 export class SharedModule {
 }

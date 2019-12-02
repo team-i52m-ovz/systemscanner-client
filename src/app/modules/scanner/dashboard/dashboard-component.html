@@ -1,19 +1,24 @@
 <mat-sidenav-container class="content">
   <mat-sidenav class="sidenav" #sidenav [mode]="'over'">
     <div class="close-wrapper">
-      <mat-icon class="close" (click)="sidenav.toggle()">arrow_back</mat-icon>
+      <mat-icon class="close" (click)="toggleSidebar()">arrow_back</mat-icon>
       <mat-icon class="add" (click)="openDialog()">add</mat-icon>
     </div>
 
     <mat-list class="item">
+      <!-- ToDo: Please contact your administrator to request access -->
       <mat-list-item *ngFor="let instance of instances" (click)="showReport(instance)">
         <mat-icon matListIcon>memory</mat-icon>
-        <h3 matLine> {{instance}} </h3>
+        <h3 matLine> {{instance.name}} </h3>
       </mat-list-item>
     </mat-list>
     <mat-icon class="logout" (click)="logout()">exit_to_app</mat-icon>
   </mat-sidenav>
 
-  <mat-icon class="open" (click)="sidenav.toggle()">menu</mat-icon>
+  <mat-icon class="open" (click)="toggleSidebar()">menu</mat-icon>
   <router-outlet></router-outlet>
 </mat-sidenav-container>
+
+<app-loader
+  [isLoaderShown]="isLoaderShown"
+></app-loader>

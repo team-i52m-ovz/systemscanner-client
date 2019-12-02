@@ -17,6 +17,10 @@ export class ReportDataService {
   constructor(private _reportApi: ReportApiService) {
   }
 
+  public getNameByPid(pid: string): Observable<any> {
+    return this._reportApi.getNameByPid(pid);
+  }
+
   public get reportsList(): IReport[] {
     return this._reportsList.getValue();
   }
