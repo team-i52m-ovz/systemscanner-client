@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ScannerInstanceApiService} from '../api-services/scanner-instance-api.service';
-import {INewInstanse} from '../../models/interfaces/new-instanse.interface';
+import {INewInstance} from '../../models/interfaces/new-instanse.interface';
 
 @Injectable()
 export class ScannerInstanceDataService {
@@ -13,7 +13,7 @@ export class ScannerInstanceDataService {
     return this._scannerInstanceApi.findScannerInstances();
   }
 
-  public addNewScannerInstance(newInstance: INewInstanse): Observable<INewInstanse> {
+  public addNewScannerInstance(newInstance: INewInstance): Observable<INewInstance> {
     return this._scannerInstanceApi.addNewScannerInstance(newInstance);
   }
 }

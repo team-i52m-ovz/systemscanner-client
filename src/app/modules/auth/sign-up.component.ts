@@ -13,6 +13,7 @@ export class SignUpComponent {
   public hide: boolean;
   public userFormGroup: FormGroup;
   public error = '';
+  public isLoaderShown: boolean;
 
   constructor(private _authDS: AuthDataService,
               private _router: Router) {
@@ -24,14 +25,22 @@ export class SignUpComponent {
   }
 
   onSubmit() {
+    this.isLoaderShown = true;
     this.error = '';
 
     return this._authDS.login(this.userFormGroup.value)
       .pipe(
-        catchError(
-          err => this.error = err.message
+        catchError(err => {
+            this.isLoaderShown = false;
+
+            return this.error = err.message;
+          }
         )
       )
-      .subscribe(() => this._router.navigate(['home']));
+      .subscribe((resp) => {
+        console.log(resp.headers.get('Roles'));
+        this.isLoaderShown = false;
+        this._router.navigate(['home']).then();
+      });
   }
 }

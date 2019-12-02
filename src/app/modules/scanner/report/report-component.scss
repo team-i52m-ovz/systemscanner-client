@@ -1,15 +1,45 @@
 ::ng-deep .mat-header-row {
-  background-image: linear-gradient(to right top, #160a2d, #1f1439, #2a1d45, #352752, #40305f);
+  background-color: #878787;
+  color: white;
 }
 
 ::ng-deep .mat-table {
   width: 100%;
 }
 
+::ng-deep .mat-row {
+  &:hover {
+    background-color: rgba(#878787, 0.5);
+    * {
+      color: white;
+    }
+  }
+}
+
 .container {
   height: 100%;
   padding-top: 100px;
   box-sizing: border-box;
+}
+
+.container-flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-100 {
+    @extend .container-flex;
+    height: 100%;
+
+  }
+
+  &-absolute {
+    @extend .container-flex;
+    position: absolute;
+    margin-top: 20px;
+    z-index: -1;
+  }
 }
 
 .mat-elevation-z8 {
@@ -46,22 +76,31 @@
   margin-bottom: 50px;
 
   ::ng-deep .mat-button {
-    border: 1px solid black;
+    border: 1px solid #878787;
+    color: #878787;
     padding: 10px 50px;
     line-height: 1;
     margin: 0 auto;
 
     &:hover {
-      color: whitesmoke;
-      background-image: linear-gradient(to right top, #160a2d, #1f1439, #2a1d45, #352752, #40305f);
+      background-color: #878787;
+      color: white;
     }
 
     &:disabled {
       border-color: rgba(black, 0.3);
-
-      &:hover {
-        background-image: none;
-      }
+      cursor: not-allowed;
     }
   }
+}
+
+::ng-deep .mat-card-content {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert {
+  height: 30px;
+  margin-right: 10px;
 }

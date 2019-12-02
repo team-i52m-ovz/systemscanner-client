@@ -14,6 +14,12 @@
 .cont {
   width: 48%;
 
+  &-full {
+    @extend .cont;
+
+    width: 100%;
+  }
+
   .title {
     width: 100%;
     padding: 10px 15px;
@@ -22,29 +28,21 @@
     box-sizing: border-box;
     font-size: 18px;
     font-weight: bold;
-    color: whitesmoke;
-    background-image: linear-gradient(to right top, #160a2d, #1f1439, #2a1d45, #352752, #40305f);
+    color: white;
+    background-color: #878787;
   }
 }
 
 .swiper-container {
-  height: 100%;
+  // height: 100%;
+  width: 100%;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
+  // display: flex;
+  justify-content: center;
   align-items: center;
 
   p {
@@ -55,13 +53,8 @@
     align-items: center;
     box-sizing: border-box;
     font-size: 15px;
-    color: #160a2d;
-    background-color: whitesmoke;
-
-    &:nth-child(2n) {
-      color: whitesmoke;
-      background-image: linear-gradient(to right top, #160a2d, #1f1439, #2a1d45, #352752, #40305f);
-    }
+    color: #878787;
+    background-color: white;
 
     span {
       width: 48%;
@@ -76,4 +69,28 @@
 .swipers-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+  background-color: #878787!important;
+}
+
+.container-flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-absolute {
+    @extend .container-flex;
+    position: absolute;
+    margin-top: 20px;
+    z-index: -1;
+  }
 }

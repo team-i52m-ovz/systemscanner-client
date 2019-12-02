@@ -1,13 +1,143 @@
+<div class="container-flex-absolute">
+  <h3 class="mat-headline">{{detailedReport?.name}}</h3>
+</div>
+
 <div class="container">
-  <div class="info__main">
+  <div class="mat-headline" *ngIf="detailedReport?.createdAt">
     <p>Created at: {{detailedReport?.createdAt | date: 'medium'}}</p>
   </div>
-  <div class="swipers-container">
+
+  <div class="mat-headline" *ngIf="detailedReport['Operating System']?.Win32_ComputerSystem">OPERATING SYSTEM</div>
+  <div class="swipers-container"*ngIf="detailedReport['Operating System']?.Win32_ComputerSystem">
+    <div class="cont">
+      <p class="title">Computer system</p>
+      <div class="swiper-container info__op">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide info__op__item" *ngFor="let op of detailedReport['Operating System']?.Win32_ComputerSystem">
+            <p>
+              <span>Admin Password Status: </span>
+              <span>{{op.AdminPasswordStatus}}</span>
+            </p>
+            <p>
+              <span>Bootup State: </span>
+              <span>{{op.BootupState}}</span>
+            </p>
+            <p>
+              <span>Caption: </span>
+              <span>{{op.Caption}}</span>
+            </p>
+            <p>
+              <span>Creation Class Name: </span>
+              <span>{{op.CreationClassName}}</span>
+            </p>
+            <p>
+              <span>DNS Host Name: </span>
+              <span>{{op.DNSHostName}}</span>
+            </p>
+            <p>
+              <span>Domain: </span>
+              <span>{{op.Domain}}</span>
+            </p>
+            <p>
+              <span>Last Load Info: </span>
+              <span>{{op.LastLoadInfo}}</span>
+            </p>
+            <p>
+              <span>Manufacturer: </span>
+              <span>{{op.Manufacturer}}</span>
+            </p>
+            <p>
+              <span>Model: </span>
+              <span>{{op.Model}}</span>
+            </p>
+            <p>
+              <span>Name: </span>
+              <span>{{op.Name}}</span>
+            </p>
+            <p>
+              <span>Network Server Mode Enabled: </span>
+              <span>{{op.NetworkServerModeEnabled}}</span>
+            </p>
+            <p>
+              <span>Number Of Logical Processors: </span>
+              <span>{{op.NumberOfLogicalProcessors}}</span>
+            </p>
+            <p>
+              <span>Number Of Processors: </span>
+              <span>{{op.NumberOfProcessors}}</span>
+            </p>
+            <p>
+              <span>Power Management Supported: </span>
+              <span>{{op.PowerManagementSupported}}</span>
+            </p>
+            <p>
+              <span>Primary Owner Name: </span>
+              <span>{{op.PrimaryOwnerName}}</span>
+            </p>
+            <p>
+              <span>System Family: </span>
+              <span>{{op.SystemFamily}}</span>
+            </p>
+            <p>
+              <span>User's Name: </span>
+              <span>{{op.UserName}}</span>
+            </p>
+            <p>
+              <span>WakeUp Type: </span>
+              <span>{{op.WakeUpType}}</span>
+            </p>
+            <p>
+              <span>Workgroup: </span>
+              <span>{{op.Workgroup}}</span>
+            </p>
+            <p>
+              <span>DNS Host Name: </span>
+              <span>{{op.dnshostName}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination__op"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-headline" *ngIf="detailedReport['Installed Software']?.Win32_Product">SOFTWARE</div>
+  <div class="swipers-container" *ngIf="detailedReport['Installed Software']?.Win32_Product">
+    <div class="cont-full">
+      <p class="title">Installed Software</p>
+      <div class="swiper-container info__soft">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide info__soft__item" *ngFor="let installed_software of detailedReport['Installed Software']?.Win32_Product">
+            <p>
+              <span>Install Location: </span>
+              <span>{{installed_software.InstallLocation}}</span>
+            </p>
+            <p>
+              <span>Name: </span>
+              <span>{{installed_software.Name}}</span>
+            </p>
+            <p>
+              <span>Vendor: </span>
+              <span>{{installed_software.Vendor}}</span>
+            </p>
+            <p>
+              <span>Version: </span>
+              <span>{{installed_software.Version}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination__soft"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-headline" *ngIf="detailedReport?.Hardware">HARDWARE</div>
+  <div class="swipers-container" *ngIf="detailedReport?.Hardware">
     <div class="cont">
       <p class="title">Win32 BIOS</p>
       <div class="swiper-container info__bios">
         <div class="swiper-wrapper">
-          <div class="swiper-slide info__bios__item" *ngFor="let bios of detailedReport?.Win32_BIOS">
+          <div class="swiper-slide info__bios__item" *ngFor="let bios of detailedReport?.Hardware?.Win32_BIOS">
             <p>
               <span>BuildNumber: </span>
               <span>{{bios.BuildNumber}}</span>
@@ -74,13 +204,14 @@
             </p>
           </div>
         </div>
+        <div class="swiper-pagination swiper-pagination__bios"></div>
       </div>
     </div>
     <div class="cont">
       <p class="title">Win32 Baseboard</p>
       <div class="swiper-container info__baseboard">
         <div class="swiper-wrapper">
-          <div class="swiper-slide info__bios__baseboard" *ngFor="let baseboard of detailedReport?.Win32_Baseboard">
+          <div class="swiper-slide info__bios__baseboard" *ngFor="let baseboard of detailedReport?.Hardware?.Win32_BaseBoard">
             <p>
               <span>Depth: </span>
               <span>{{baseboard.Depth}}</span>
@@ -163,7 +294,12 @@
             </p>
           </div>
         </div>
+        <div class="swiper-pagination swiper-pagination__baseboard"></div>
       </div>
     </div>
   </div>
 </div>
+
+<app-loader
+  [isLoaderShown]="isLoaderShown"
+></app-loader>

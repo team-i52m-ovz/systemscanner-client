@@ -19,8 +19,11 @@ export class AuthApiService {
     return this._httpClient.post<HttpResponse<any>>(`${this._api}auth/login`, user, {observe: 'response'})
       .pipe(
         take(1),
-        map(res =>
-          localStorage.setItem(CommonHttp.headers.auth, res.headers.get(CommonHttp.headers.auth)))
+        map(res => {
+          localStorage.setItem(CommonHttp.headers.auth, res.headers.get(CommonHttp.headers.auth));
+          console.log(1, res);
+          return res;
+        })
       );
   }
 }

@@ -1,6 +1,6 @@
-import {INewInstanse} from '../../models/interfaces/new-instanse.interface';
+import {INewInstance} from '../../models/interfaces/new-instanse.interface';
 import {IReport, IReportResponse} from '../../models/interfaces/report.interface';
-import {IDetailedReport} from '../../models/interfaces/detailed-report.interface';
+import {IComputerSystem, IDetailedReport, IHardware, IWin32Product} from '../../models/interfaces/detailed-report.interface';
 import {IWin32Bios} from '../../models/interfaces/win32-bios.interface';
 import {IWin32Baseboard} from '../../models/interfaces/win32-baseboard.interface';
 
@@ -9,8 +9,8 @@ export class Mapper {
   constructor() {
   }
 
-  public static mapNewInstanceToINewInstance(newInstance: { pid: string }): INewInstanse {
-    return <INewInstanse>{
+  public static mapNewInstanceToINewInstance(newInstance: { pid: string }): INewInstance {
+    return <INewInstance>{
       pid: newInstance.pid
     };
   }
@@ -82,8 +82,7 @@ export class Mapper {
       Status: winInfo.Status || '',
       Weight: winInfo.Weight || '',
       Width: winInfo.Width || ''
-    }
-      ;
+    };
   }
 
   public static mapWin32BaseboardArrayToIWin32BaseboardArray(winInfoArray: IWin32Baseboard[]) {
@@ -92,11 +91,19 @@ export class Mapper {
 
   public static mapDetailedReportToIDetailedReport(report: any): IDetailedReport {
     return <IDetailedReport>{
-      Win32_BIOS: this.mapWin32BiosArrayToIWin32BiosArray(report.Win32_BIOS),
-      Win32_Baseboard: this.mapWin32BaseboardArrayToIWin32BaseboardArray(report.Win32_Baseboard),
-      Win32_ComputerSystem: report.Win32_ComputerSystem || '',
+      Hardware: {
+        Win32_BIOS: this.mapWin32BiosArrayToIWin32BiosArray(report.Hardware.Win32_BIOS),
+        Win32_BaseBoard: this.mapWin32BaseboardArrayToIWin32BaseboardArray(report.Hardware.Win32_BaseBoard)
+      },
+      'Operating System': {
+        Win32_ComputerSystem: report['Operating System'].Win32_ComputerSystem.map(el => <IComputerSystem>el)
+      },
+      'Installed Software': {
+        Win32_Product: report['Installed Software'].Win32_Product.map(el => <IWin32Product>el)
+      },
       createdAt: new Date(report.createdAt) || '',
       id: report.id || '',
+      name: report.name || '',
       scannerPid: report.scannerPid || ''
     };
   }

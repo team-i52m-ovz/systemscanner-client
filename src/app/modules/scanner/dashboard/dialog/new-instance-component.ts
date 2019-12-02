@@ -14,6 +14,10 @@ export class NewInstanceComponent {
   constructor(private _fb: FormBuilder,
               public dialogRef: MatDialogRef<NewInstanceComponent>) {
     this.formInput = this._fb.group({
+      name: new FormControl('',
+        [Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(100)]),
       pid: new FormControl('',
         [Validators.required,
           Validators.minLength(30),
@@ -28,6 +32,7 @@ export class NewInstanceComponent {
   public onSubmit(): void {
     if (this.formInput.valid) {
       this.dialogRef.close({
+        name: this.formInput.controls['name'].value,
         pid: this.formInput.controls['pid'].value,
         token: this.formInput.controls['token'].value
       });
