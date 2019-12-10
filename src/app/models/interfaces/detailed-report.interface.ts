@@ -3,10 +3,10 @@ import {IWin32Baseboard} from './win32-baseboard.interface';
 
 export interface IDetailedReport {
   Hardware: IHardware;
-  'Operating System': {
+  'operatingSystem': {
     Win32_ComputerSystem: IComputerSystem[];
   };
-  'Installed Software': {
+  'installedSoftware': {
     Win32_Product: IWin32Product[]
   };
   name: string;

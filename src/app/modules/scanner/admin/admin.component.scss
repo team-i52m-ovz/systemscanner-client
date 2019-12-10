@@ -1,0 +1,88 @@
+::ng-deep .mat-header-row {
+  background-color: #878787;
+  * {
+    color: white!important;
+  }
+}
+
+::ng-deep .mat-table {
+  width: 100%;
+}
+
+::ng-deep .mat-row {
+  &:hover {
+    background-color: rgba(#878787, 0.5);
+    * {
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  padding-top: 100px;
+  box-sizing: border-box;
+
+  &-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    width: 70%;
+    cursor: pointer;
+  }
+
+  &-table {
+    @extend .container;
+    padding-top: 50px;
+  }
+}
+
+.container-flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-100 {
+    @extend .container-flex;
+    height: 100%;
+
+  }
+
+  &-absolute {
+    @extend .container-flex;
+    position: absolute;
+    margin-top: 20px;
+    z-index: -1;
+  }
+}
+
+.mat-elevation-z8 {
+  width: 70%;
+  padding: auto;
+  margin: 0 auto 50px;
+}
+
+.table {
+  &-container {
+    height: fit-content;
+    max-height: calc(100vh - 240px);
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  &-header {
+    &-id, &-date {
+      padding: 0 24px !important;
+      color: whitesmoke;
+    }
+  }
+
+  &-cell {
+    &-id, &-date {
+      padding: 0 24px !important;
+      cursor: pointer;
+    }
+  }
+}

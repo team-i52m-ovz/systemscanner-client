@@ -7,13 +7,13 @@
     <p>Created at: {{detailedReport?.createdAt | date: 'medium'}}</p>
   </div>
 
-  <div class="mat-headline" *ngIf="detailedReport['Operating System']?.Win32_ComputerSystem">OPERATING SYSTEM</div>
-  <div class="swipers-container"*ngIf="detailedReport['Operating System']?.Win32_ComputerSystem">
+  <div class="mat-headline" *ngIf="detailedReport?.operatingSystem?.Win32_ComputerSystem">OPERATING SYSTEM</div>
+  <div class="swipers-container"*ngIf="detailedReport?.operatingSystem?.Win32_ComputerSystem">
     <div class="cont">
       <p class="title">Computer system</p>
       <div class="swiper-container info__op">
         <div class="swiper-wrapper">
-          <div class="swiper-slide info__op__item" *ngFor="let op of detailedReport['Operating System']?.Win32_ComputerSystem">
+          <div class="swiper-slide info__op__item" *ngFor="let op of detailedReport?.operatingSystem?.Win32_ComputerSystem">
             <p>
               <span>Admin Password Status: </span>
               <span>{{op.AdminPasswordStatus}}</span>
@@ -101,13 +101,13 @@
     </div>
   </div>
 
-  <div class="mat-headline" *ngIf="detailedReport['Installed Software']?.Win32_Product">SOFTWARE</div>
-  <div class="swipers-container" *ngIf="detailedReport['Installed Software']?.Win32_Product">
+  <div class="mat-headline" *ngIf="detailedReport?.installedSoftware?.Win32_Product">SOFTWARE</div>
+  <div class="swipers-container" *ngIf="detailedReport?.installedSoftware?.Win32_Product">
     <div class="cont-full">
       <p class="title">Installed Software</p>
       <div class="swiper-container info__soft">
         <div class="swiper-wrapper">
-          <div class="swiper-slide info__soft__item" *ngFor="let installed_software of detailedReport['Installed Software']?.Win32_Product">
+          <div class="swiper-slide info__soft__item" *ngFor="let installed_software of detailedReport?.installedSoftware?.Win32_Product">
             <p>
               <span>Install Location: </span>
               <span>{{installed_software.InstallLocation}}</span>

@@ -2,7 +2,7 @@
   <mat-sidenav class="sidenav" #sidenav [mode]="'over'">
     <div class="close-wrapper">
       <mat-icon class="close" (click)="toggleSidebar()">arrow_back</mat-icon>
-      <mat-icon class="add" (click)="openDialog()">add</mat-icon>
+      <div class="settings" *ngIf="isAdmin" (click)="openInstances()"></div>
     </div>
 
     <mat-list class="item">

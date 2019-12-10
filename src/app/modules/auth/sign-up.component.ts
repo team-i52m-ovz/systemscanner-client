@@ -38,7 +38,6 @@ export class SignUpComponent {
         )
       )
       .subscribe((resp) => {
-        console.log(resp.headers.get('Roles'));
         this.isLoaderShown = false;
         this._router.navigate(['home']).then();
       });

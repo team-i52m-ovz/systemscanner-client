@@ -20,8 +20,8 @@ export class AuthApiService {
       .pipe(
         take(1),
         map(res => {
+          localStorage.setItem('isAdmin', res.headers.get('roles').split(',').includes('ADMIN').toString());
           localStorage.setItem(CommonHttp.headers.auth, res.headers.get(CommonHttp.headers.auth));
-          console.log(1, res);
           return res;
         })
       );
