@@ -3,11 +3,12 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {CommonHttp} from '../../models/constants/constants';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -25,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError(err => {
           if (err.status === 401 || err.status === 403) {
             localStorage.clear();
-            throw Error(err.error.message);
+            this.router.navigate(['login']).then();
             return of();
           }
         })

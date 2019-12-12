@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import {NewInstanceComponent} from './dialog/new-instance-component';
+import {NewInstanceComponent} from '../admin/dialog/new-instance-component';
 import {MatDialog, MatSidenav} from '@angular/material';
 import {ScannerInstanceDataService} from '../../../services/data-services/scanner-instance-data.service';
 import {INewInstance} from '../../../models/interfaces/new-instanse.interface';
@@ -16,11 +16,13 @@ export class DashboardComponent {
 
   public instances: any[];
   public isLoaderShown: boolean;
+  public isAdmin: boolean;
 
   constructor(private scannerInstanceDS: ScannerInstanceDataService,
-              private router: Router,
-              public dialog: MatDialog) {
+              private router: Router) {
     this.isLoaderShown = true;
+
+    this.isAdmin = Boolean(localStorage.getItem('isAdmin'));
     this.scannerInstanceDS.findScannerInstances()
       .subscribe(res => {
         this.instances = res;
@@ -33,32 +35,17 @@ export class DashboardComponent {
     this.sidenav.toggle().then();
   }
 
-  public addNewInstance(newInstance: INewInstance): void {
-    this.isLoaderShown = true;
-    this.scannerInstanceDS.addNewScannerInstance(newInstance)
-      .pipe(
-        switchMap(() => this.scannerInstanceDS.findScannerInstances())
-      ).subscribe(resp => {
-      this.instances = resp;
-      this.isLoaderShown = false;
-    });
-  }
-
-  public openDialog(): void {
-    const dialogRef = this.dialog.open(NewInstanceComponent);
-
-    dialogRef.afterClosed().subscribe((result: INewInstance) => {
-      if (result) {
-        this.addNewInstance(result);
-      }
-    });
-  }
-
   public showReport(instance: any): void {
     this.isLoaderShown = true;
     this.router.navigate(['/scanner/report', instance.pid]).then(() => {
       this.toggleSidebar();
       this.isLoaderShown = false;
+    });
+  }
+
+  public openInstances(): void {
+    this.router.navigate(['/scanner/admin']).then(() => {
+      this.toggleSidebar();
     });
   }
 

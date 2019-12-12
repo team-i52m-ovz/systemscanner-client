@@ -9,9 +9,15 @@ export class Mapper {
   constructor() {
   }
 
-  public static mapNewInstanceToINewInstance(newInstance: { pid: string }): INewInstance {
+  public static mapInstancesToAdminINewInstances(instances: any): INewInstance[] {
+    return instances.map(el => this.mapInstancesToAdminINewInstances(el));
+  }
+
+  public static mapNewInstanceToINewInstance(newInstance: any): INewInstance {
     return <INewInstance>{
-      pid: newInstance.pid
+      pid: newInstance.pid,
+      name: newInstance.name,
+      users: newInstance.assignees
     };
   }
 
@@ -95,10 +101,10 @@ export class Mapper {
         Win32_BIOS: this.mapWin32BiosArrayToIWin32BiosArray(report.Hardware.Win32_BIOS),
         Win32_BaseBoard: this.mapWin32BaseboardArrayToIWin32BaseboardArray(report.Hardware.Win32_BaseBoard)
       },
-      'Operating System': {
+      operatingSystem: {
         Win32_ComputerSystem: report['Operating System'].Win32_ComputerSystem.map(el => <IComputerSystem>el)
       },
-      'Installed Software': {
+      installedSoftware: {
         Win32_Product: report['Installed Software'].Win32_Product.map(el => <IWin32Product>el)
       },
       createdAt: new Date(report.createdAt) || '',

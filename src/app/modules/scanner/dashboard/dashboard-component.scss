@@ -35,8 +35,13 @@
   margin: 15px 15px 0;
 }
 
-.add {
+.settings {
   margin: 15px 15px 0 20px;
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  background: url('../../../../assets/images/settings-cog.svg') no-repeat center;
+  background-size: cover;
 }
 
 .close-wrapper {

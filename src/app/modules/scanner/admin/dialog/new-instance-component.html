@@ -1,0 +1,23 @@
+<h1 mat-dialog-title><span [innerHTML]="isEdit ? 'Edit' : 'Enter credentials to start new'"></span> instance</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formInput" class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="PID" formControlName="pid" required>
+    </mat-form-field>
+    <mat-form-field *ngIf="!isEdit">
+      <input matInput placeholder="Token" formControlName="token" *ngIf="!isEdit">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Users</mat-label>
+      <mat-select formControlName="users" multiple [compareWith]="compareFn">
+        <mat-option *ngFor="let user of usersList" [value]="user">{{user.firstName}} {{user.lastName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [disabled]="formInput.invalid" (click)="onSubmit()">Ok</button>
+</div>

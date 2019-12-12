@@ -1,0 +1,49 @@
+<div class="container-flex-absolute">
+  <h3 class="mat-headline">Instances</h3>
+</div>
+
+<div class="container">
+  <div class="container-icon">
+    <mat-icon class="add_circle_outline" (click)="openDialog(false)">add</mat-icon>
+  </div>
+  <div class="container-table" *ngIf="(instancesList$ | async).length; else noData">
+    <div class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="(instancesList$ | async)">
+        <ng-container matColumnDef="pid">
+          <th class="table-header-pid" mat-header-cell *matHeaderCellDef> Instance PID</th>
+          <td class="table-cell-pid" mat-cell *matCellDef="let element" (click)="editInstance(element)">
+            {{element.pid}}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th class="table-header-name" mat-header-cell *matHeaderCellDef> Instance Name</th>
+          <td class="table-cell-name" mat-cell *matCellDef="let element" (click)="editInstance(element)">
+            {{element.name}}
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="container-flex-100">
+      <mat-card>
+        <mat-card-content>
+          <img src="../../../../assets/images/alert.svg" alt="alert" class="alert">
+          <span>No Data Found</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-template>
+
+</div>
+
+<app-loader
+  [isLoaderShown]="isLoaderShown"
+></app-loader>
